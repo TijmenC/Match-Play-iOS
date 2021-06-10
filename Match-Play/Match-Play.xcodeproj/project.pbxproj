@@ -18,6 +18,7 @@
 		6A34311D267204AC0018D8C2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A34311C267204AC0018D8C2 /* Match.swift */; };
 		6A34311F267207910018D8C2 /* UserFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A34311E267207910018D8C2 /* UserFeed.swift */; };
 		6A34312426720B2B0018D8C2 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A34312326720B2B0018D8C2 /* MatchView.swift */; };
+		6A34312626720E660018D8C2 /* ScorePointsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A34312526720E660018D8C2 /* ScorePointsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		6A34311C267204AC0018D8C2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		6A34311E267207910018D8C2 /* UserFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeed.swift; sourceTree = "<group>"; };
 		6A34312326720B2B0018D8C2 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
+		6A34312526720E660018D8C2 /* ScorePointsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorePointsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				6A3430ED2671F1750018D8C2 /* ContentView.swift */,
 				6A34311E267207910018D8C2 /* UserFeed.swift */,
 				6A34312326720B2B0018D8C2 /* MatchView.swift */,
+				6A34312526720E660018D8C2 /* ScorePointsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				6A3430EC2671F1750018D8C2 /* Match_PlayApp.swift in Sources */,
 				6A3431192671F3BA0018D8C2 /* LoginUser.swift in Sources */,
 				6A34311D267204AC0018D8C2 /* Match.swift in Sources */,
+				6A34312626720E660018D8C2 /* ScorePointsView.swift in Sources */,
 				6A34312426720B2B0018D8C2 /* MatchView.swift in Sources */,
 				6A34311F267207910018D8C2 /* UserFeed.swift in Sources */,
 				6A34311B2671FB430018D8C2 /* Token.swift in Sources */,
