@@ -12,8 +12,9 @@ struct UserFeed: View {
     
     var body: some View {
         ScrollView {
+            Text("Welcome to We Are ").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/.bold()) + Text("Match Play").font(.title.bold()).foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
         ForEach(results.data) { result in
-            MatchView(firstName: "Eric", lastName: "Jognson", likes: result.likeCount, comments: result.commentCount, clubName: result.course.name, uploadDate: result.createdAt, description: result.description ?? "", isLiked: result.liked, isCommented: result.commented, isVerified: result.verifiedAt ?? "")
+            MatchView(firstName: result.users?[0].firstName ?? "", secondName: result.users?[1].firstName ?? "", likes: result.likeCount, comments: result.commentCount, clubName: result.course.name, uploadDate: result.createdAt, description: result.description ?? "", isLiked: result.liked, isCommented: result.commented, isVerified: result.verifiedAt ?? "")
              }
         }.onAppear(perform: loadData)
             

@@ -15,6 +15,7 @@ struct ScorePointsView: View {
                 .strokeBorder(Color.black,lineWidth: 0.1)
                 .background(Circle().foregroundColor(Color(.systemGray5)))
                 .frame(width: 15, height: 15)
+             
                 
           }
         

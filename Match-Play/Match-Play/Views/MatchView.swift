@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MatchView: View {
-    @State var firstName = ""
-    @State var lastName = ""
+    @State var firstName: String
+    @State var secondName: String
     @State var likes: Int
     @State var comments: Int
     @State var clubName: String
@@ -20,24 +20,25 @@ struct MatchView: View {
     @State var isVerified: String
     
     
+    
     var body: some View {
         VStack {
             Divider()
             HStack {
-                Text("T. Pieters")
+                Text(firstName)
                     .padding()
                     .frame(width: 200, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .center)
                     .foregroundColor(Color.gray)
-                Text("A. Achternaam")
+                Text(secondName)
                     .padding()
                     .frame(width: 200, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: .center)
                     .foregroundColor(Color.gray)
             }
             Divider()
-            HStack {
-                ScorePointsView(circleAmount: 18)
-            }
-            Image("fall-leave")
+            HStack() {
+                ScorePointsView(circleAmount: 15)
+            }.padding(.top, 10)
+            Image("golf")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 400.0, height: 250.0)
@@ -52,8 +53,10 @@ struct MatchView: View {
                     .frame(width: 200, height: 50, alignment: .trailing)
                     .foregroundColor(Color.gray)
             }
+            if (self.description != "") {
             Text(description)
                 .frame(width: 400, height: 50)
+            }
             Divider()
             HStack {
                 HStack {
@@ -111,6 +114,7 @@ struct MatchView: View {
 
 struct MatchView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchView(likes: 5, comments: 3, clubName: "hey", uploadDate: "ey", description: "description", isLiked: true, isCommented: true, isVerified: "")
+        MatchView(firstName: "Erik Johnson", secondName: "Johnson Johnson", likes: 5, comments: 3, clubName: "hey", uploadDate: "ey", description: "description", isLiked: true, isCommented: true, isVerified: "")
+        MatchView(firstName: "Erik Johnson", secondName: "Johnson Johnson", likes: 5, comments: 3, clubName: "hey", uploadDate: "ey", description: "description", isLiked: false, isCommented: false, isVerified: "13-05-23")
     }
 }
