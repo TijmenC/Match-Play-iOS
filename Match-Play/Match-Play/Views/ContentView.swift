@@ -16,14 +16,17 @@ struct ContentView: View {
     @State private var showingConfirmation = false
     var body: some View {
         NavigationView {
-        VStack(alignment: .leading) {
+            VStack(alignment: .center) {
+                Text("Match Play").font(.title.bold()).padding()
             
-            Text("Username").padding(.trailing)
+                Text("Username").padding(.trailing).font(.title2.bold())
             TextField("Enter username", text: $email)
                 .padding()
-            Text("Password").padding(.trailing)
+                Divider()
+                Text("Password").padding(.trailing).font(.title2.bold())
             TextField("Enter password", text: $password)
                 .padding()
+                Divider()
             NavigationLink(destination: UserFeed(results: AllData(data: [])), isActive: $isActive) {
             Button(action: {
                 postLogin()
@@ -33,10 +36,16 @@ struct ContentView: View {
                 Text("Login")
                 
             }
+            } .padding()
+            if self.showingConfirmation {
+                Text(confirmationMessage)
+                    .foregroundColor(.red)
             }
-            .padding()
+         
         }.padding()
+            
         }
+
     }
     
     
@@ -51,18 +60,31 @@ struct ContentView: View {
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
                 print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
+                self.isActive = false
                 return
             }
             if let decodedUser = try? JSONDecoder().decode(Token.self, from: data) {
                 print(decodedUser.api_token)
                 UserDefaults.standard.set(decodedUser.api_token, forKey: "savedToken")
-                self.isActive = true
+                if (decodedUser.api_token == nil){
+                    self.isActive = false
+                    confirmationMessage = "You used an incorrect email/password!"
+                    showingConfirmation = true
+                }
+                else{
+                    self.isActive = true
+                    showingConfirmation = false
+                }
+              
+               
                 
               
                 
             } else {
                 print("Invalid response from server")
-             //   print(data)
+                confirmationMessage = "There was a trouble with the server!"
+             showingConfirmation = true
+                self.isActive = false
             }
         }.resume()
     }

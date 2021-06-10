@@ -158,8 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				6A3431182671F3BA0018D8C2 /* LoginUser.swift */,
-				6A34311A2671FB430018D8C2 /* Token.swift */,
 				6A34311C267204AC0018D8C2 /* Match.swift */,
+				6A34311A2671FB430018D8C2 /* Token.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
