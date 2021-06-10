@@ -11,17 +11,21 @@ struct ContentView: View {
     
     @State var email = "ioscase"
     @State var password = "iOSCase"
+    @State var isActive = false
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
-    @State var results = [Match]()
+    @State var results = [Response]()
     var body: some View {
+       
         VStack(alignment: .leading) {
+            
             Text("Username").padding(.trailing)
             TextField("Enter username", text: $email)
                 .padding()
             Text("Password").padding(.trailing)
             TextField("Enter password", text: $password)
                 .padding()
+            NavigationLink(destination: UserFeed(), isActive: $isActive) {
             Button(action: {
                 postLogin()
                 
@@ -30,8 +34,10 @@ struct ContentView: View {
                 Text("Login")
                 
             }
+            }
             .padding()
         }.padding()
+        
     }
     
     
@@ -51,7 +57,8 @@ struct ContentView: View {
             if let decodedUser = try? JSONDecoder().decode(Token.self, from: data) {
                 print(decodedUser.api_token)
                 UserDefaults.standard.set(decodedUser.api_token, forKey: "savedToken")
-                loadData()
+                self.isActive = true
+              
                 
             } else {
                 print("Invalid response from server")
@@ -67,28 +74,7 @@ struct ContentView: View {
             return nil
         }
     }
-    func loadData() {
-        guard let url = URL(string: "https://api.wearematchplay.com/v2/matches") else {
-            print("Invalid URL")
-            return
-        }
-        let savedToken = UserDefaults.standard.object(forKey: "savedToken")
-        var request = URLRequest(url: url)
-        request.setValue((savedToken as! String), forHTTPHeaderField: "Authorization")
-        
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                if let response = try? JSONDecoder().decode([Match].self, from: data) {
-                    DispatchQueue.main.async {
-                        self.results = response
-                        print(response)
-                    }
-                    return
-                }
-                print(data)
-            }
-        }.resume()
-    }
+   
 }
 
 

@@ -28,7 +28,7 @@ struct MatchView: View {
             HStack {
                 ScorePointsView(circleAmount: 5)
             }
-            Image("fall-leaves")
+            Image("fall-leave")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 400.0, height: 250.0)
