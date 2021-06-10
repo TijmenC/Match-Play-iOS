@@ -1,38 +1,15 @@
 
 
 import Foundation
-
-// MARK: - Response
-struct Response: Codable {
-    let currentPage: Int
-    let data: [Datum]
-    let firstPageURL: String
-    let from, lastPage: Int
-    let lastPageURL: String
-    let links: [Link]
-    let nextPageURL, path: String
-    let perPage: Int
-    let prevPageURL: JSONNull?
-    let to, total: Int
-
-    enum CodingKeys: String, CodingKey {
-        case currentPage = "current_page"
-        case data
-        case firstPageURL = "first_page_url"
-        case from
-        case lastPage = "last_page"
-        case lastPageURL = "last_page_url"
-        case links
-        case nextPageURL = "next_page_url"
-        case path
-        case perPage = "per_page"
-        case prevPageURL = "prev_page_url"
-        case to, total
-    }
+struct AllData: Codable {
+    let data: [Data]
+    
 }
 
+
+
 // MARK: - Datum
-struct Datum: Codable {
+struct Data: Codable {
     let id, courseID: Int
     let showCourse: Bool
     let type, winningScore, holesNotPlayed, winningTeam: Int
@@ -40,13 +17,13 @@ struct Datum: Codable {
     let datumDescription: String?
     let holeOrder: [Int]?
     let playedAt, createdAt, updatedAt: String
-    let deletedAt: JSONNull?
-    let verifiedAt: String?
+   // let deletedAt: JSONNull?
+    //let verifiedAt: String
     let liked: Bool
     let likeCount: Int
     let commented: Bool
     let commentCount: Int
-    let users: [User]
+   // let users: [User]?
     let course: Course
     let images: [ImageMatch]
 
@@ -64,13 +41,14 @@ struct Datum: Codable {
         case playedAt = "played_at"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
-        case deletedAt = "deleted_at"
-        case verifiedAt = "verified_at"
+      //  case deletedAt = "deleted_at"
+       // case verifiedAt = "verified_at"
         case liked
         case likeCount = "like_count"
         case commented
         case commentCount = "comment_count"
-        case users, course, images
+       // case users, course, images
+        case course, images
     }
 }
 
@@ -151,11 +129,11 @@ struct User: Codable {
     let publiclyRanked: Bool
     let courseID: Int?
     let proAt: String?
-    let verifiedAt: VerifiedAt?
+    let verifiedAt: String?
     let createdAt, updatedAt: String
     let isFollowing, isGuest, isBlocked: Bool
     let pivot: Pivot
-    let media: [Media]
+    let media: [Media]?
     let image: ImageMatch
 
     enum CodingKeys: String, CodingKey {
@@ -546,3 +524,4 @@ class JSONAny: Codable {
         }
     }
 }
+

@@ -8,31 +8,46 @@
 import SwiftUI
 
 struct UserFeed: View {
-    @State var results = [Response]()
+    @State var results = [AllData]()
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).onAppear(perform: loadData)
     }
     func loadData() {
         guard let url = URL(string: "https://api.wearematchplay.com/v2/matches") else {
             print("Invalid URL")
             return
         }
-        let savedToken = UserDefaults.standard.object(forKey: "savedToken")
+        let savedToken = "Bearer " + (UserDefaults.standard.object(forKey: "savedToken") as! String)
         var request = URLRequest(url: url)
-        request.setValue((savedToken as! String), forHTTPHeaderField: "Authorization")
+        request.setValue((savedToken ), forHTTPHeaderField: "Authorization")
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) {data, response, error in
             if let data = data {
-                if let response = try? JSONDecoder().decode([Response].self, from: data) {
-                    DispatchQueue.main.async {
-                        self.results = response
-                        print(response)
-                    }
-                    return
-                }
-                print(data)
+              do {
+                let decodedResponse = try JSONDecoder().decode(AllData.self, from: data)
+                DispatchQueue.main.async {
+                    print(decodedResponse)
+                 }
+              } catch let DecodingError.dataCorrupted(context) {
+                print(context)
+            } catch let DecodingError.keyNotFound(key, context) {
+                print("Key '\(key)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch let DecodingError.valueNotFound(value, context) {
+                print("Value '\(value)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch let DecodingError.typeMismatch(type, context)  {
+                print("Type '\(type)' mismatch:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            } catch {
+                print("error: ", error)
             }
-        }.resume()
+              
+                
+              return
+            }
+
+               }.resume()
     }
 }
 

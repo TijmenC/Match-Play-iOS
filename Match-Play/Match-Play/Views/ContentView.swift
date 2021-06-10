@@ -14,9 +14,8 @@ struct ContentView: View {
     @State var isActive = false
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
-    @State var results = [Response]()
     var body: some View {
-       
+        NavigationView {
         VStack(alignment: .leading) {
             
             Text("Username").padding(.trailing)
@@ -37,7 +36,7 @@ struct ContentView: View {
             }
             .padding()
         }.padding()
-        
+        }
     }
     
     
@@ -58,6 +57,7 @@ struct ContentView: View {
                 print(decodedUser.api_token)
                 UserDefaults.standard.set(decodedUser.api_token, forKey: "savedToken")
                 self.isActive = true
+                
               
                 
             } else {
@@ -66,14 +66,7 @@ struct ContentView: View {
             }
         }.resume()
     }
-    func parseJson<T: Decodable>(data: Data, type: T.Type) -> T? {
-        do {
-            return try JSONDecoder().decode(type.self, from: data)
-        } catch {
-            print("JSON decode error:", error)
-            return nil
-        }
-    }
+   
    
 }
 
