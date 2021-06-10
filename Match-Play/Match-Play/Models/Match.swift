@@ -17,13 +17,13 @@ struct Data: Codable, Identifiable {
     let description: String?
     let holeOrder: [Int]?
     let playedAt, createdAt, updatedAt: String
-   // let deletedAt: JSONNull?
+    let deletedAt: String?
     let verifiedAt: String?
     let liked: Bool
     let likeCount: Int
     let commented: Bool
     let commentCount: Int
-   // let users: [User]?
+    let users: [User]?
     let course: Course
     let images: [ImageMatch]
 
@@ -41,14 +41,14 @@ struct Data: Codable, Identifiable {
         case playedAt = "played_at"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
-      //  case deletedAt = "deleted_at"
+        case deletedAt = "deleted_at"
         case verifiedAt = "verified_at"
         case liked
         case likeCount = "like_count"
         case commented
         case commentCount = "comment_count"
-       // case users, course, images
-        case course, images
+        case users, course, images
+       // case course, images
     }
 }
 
@@ -175,7 +175,7 @@ struct Media: Codable {
     let responsiveImages: [JSONAny]
     let orderColumn: Int
     let createdAt, updatedAt: String
-    let generatedConversions: JSONNull?
+    let generatedConversions: [String]?
 
     enum CodingKeys: String, CodingKey {
         case id
