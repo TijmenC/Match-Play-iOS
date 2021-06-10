@@ -13,8 +13,11 @@
 		6A3430F32671F1760018D8C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A3430F22671F1760018D8C2 /* Preview Assets.xcassets */; };
 		6A3430FE2671F1760018D8C2 /* Match_PlayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3430FD2671F1760018D8C2 /* Match_PlayTests.swift */; };
 		6A3431092671F1760018D8C2 /* Match_PlayUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3431082671F1760018D8C2 /* Match_PlayUITests.swift */; };
-		6A3431192671F3BA0018D8C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3431182671F3BA0018D8C2 /* User.swift */; };
+		6A3431192671F3BA0018D8C2 /* LoginUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3431182671F3BA0018D8C2 /* LoginUser.swift */; };
 		6A34311B2671FB430018D8C2 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A34311A2671FB430018D8C2 /* Token.swift */; };
+		6A34311D267204AC0018D8C2 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A34311C267204AC0018D8C2 /* Match.swift */; };
+		6A34311F267207910018D8C2 /* UserFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A34311E267207910018D8C2 /* UserFeed.swift */; };
+		6A34312426720B2B0018D8C2 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A34312326720B2B0018D8C2 /* MatchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +50,11 @@
 		6A3431042671F1760018D8C2 /* Match-PlayUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Match-PlayUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A3431082671F1760018D8C2 /* Match_PlayUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match_PlayUITests.swift; sourceTree = "<group>"; };
 		6A34310A2671F1760018D8C2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6A3431182671F3BA0018D8C2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		6A3431182671F3BA0018D8C2 /* LoginUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUser.swift; sourceTree = "<group>"; };
 		6A34311A2671FB430018D8C2 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
+		6A34311C267204AC0018D8C2 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		6A34311E267207910018D8C2 /* UserFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeed.swift; sourceTree = "<group>"; };
+		6A34312326720B2B0018D8C2 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				6A3430ED2671F1750018D8C2 /* ContentView.swift */,
+				6A34311E267207910018D8C2 /* UserFeed.swift */,
+				6A34312326720B2B0018D8C2 /* MatchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -146,8 +154,9 @@
 		6A3431172671F3AA0018D8C2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				6A3431182671F3BA0018D8C2 /* User.swift */,
+				6A3431182671F3BA0018D8C2 /* LoginUser.swift */,
 				6A34311A2671FB430018D8C2 /* Token.swift */,
+				6A34311C267204AC0018D8C2 /* Match.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -283,7 +292,10 @@
 			files = (
 				6A3430EE2671F1750018D8C2 /* ContentView.swift in Sources */,
 				6A3430EC2671F1750018D8C2 /* Match_PlayApp.swift in Sources */,
-				6A3431192671F3BA0018D8C2 /* User.swift in Sources */,
+				6A3431192671F3BA0018D8C2 /* LoginUser.swift in Sources */,
+				6A34311D267204AC0018D8C2 /* Match.swift in Sources */,
+				6A34312426720B2B0018D8C2 /* MatchView.swift in Sources */,
+				6A34311F267207910018D8C2 /* UserFeed.swift in Sources */,
 				6A34311B2671FB430018D8C2 /* Token.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
