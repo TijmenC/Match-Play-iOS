@@ -14,11 +14,11 @@ struct Data: Codable, Identifiable {
     let showCourse: Bool
     let type, winningScore, holesNotPlayed, winningTeam: Int
     let isCupMatch: Bool
-    let datumDescription: String?
+    let description: String?
     let holeOrder: [Int]?
     let playedAt, createdAt, updatedAt: String
    // let deletedAt: JSONNull?
-    //let verifiedAt: String
+    let verifiedAt: String?
     let liked: Bool
     let likeCount: Int
     let commented: Bool
@@ -36,13 +36,13 @@ struct Data: Codable, Identifiable {
         case holesNotPlayed = "holes_not_played"
         case winningTeam = "winning_team"
         case isCupMatch = "is_cup_match"
-        case datumDescription = "description"
+        case description
         case holeOrder = "hole_order"
         case playedAt = "played_at"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
       //  case deletedAt = "deleted_at"
-       // case verifiedAt = "verified_at"
+        case verifiedAt = "verified_at"
         case liked
         case likeCount = "like_count"
         case commented

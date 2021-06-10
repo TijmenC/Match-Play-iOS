@@ -17,7 +17,8 @@ struct MatchView: View {
     @State var description: String
     @State var isLiked: Bool
     @State var isCommented: Bool
-
+    @State var isVerified: String
+    
     
     var body: some View {
         VStack {
@@ -34,7 +35,7 @@ struct MatchView: View {
             }
             Divider()
             HStack {
-                ScorePointsView(circleAmount: 5)
+                ScorePointsView(circleAmount: 18)
             }
             Image("fall-leave")
                 .resizable()
@@ -51,47 +52,65 @@ struct MatchView: View {
                     .frame(width: 200, height: 50, alignment: .trailing)
                     .foregroundColor(Color.gray)
             }
-                Text(description)
-                    .frame(width: 400, height: 50)
+            Text(description)
+                .frame(width: 400, height: 50)
             Divider()
             HStack {
                 HStack {
                     if (!isLiked) {
-                Image(systemName: "heart")
-                    .font(Font.system(size: 30))
-                    .padding(.leading, 5)
-                    Text(" \(likes)")
-                }
+                        Image(systemName: "heart")
+                            .font(Font.system(size: 30))
+                            .padding(.leading, 5)
+                        Text(" \(likes)")
+                    }
                     else {
                         Image(systemName: "heart.fill")
                             .font(Font.system(size: 30))
                             .padding(.leading, 5)
                             .foregroundColor(.red)
-                            Text(" \(likes)")
-                            
+                        Text(" \(likes)")
+                        
                         
                     }
                 }.frame(width: 80, height: 50, alignment: .leading)
-               
+                
                 HStack {
-                Image(systemName: "bubble.left")
-                    .font(Font.system(size: 30))
+                    if (!isCommented) {
+                    Image(systemName: "bubble.left")
+                        .font(Font.system(size: 30))
                     Text(" \(comments)")
+                    }
+                    else {
+                        Image(systemName: "bubble.left.fill")
+                            .font(Font.system(size: 30))
+                            .foregroundColor(.black)
+                        Text(" \(comments)")
+                        
+                    }
                 }.frame(width: 70, height: 50, alignment: .leading)
                 HStack {
-                Image(systemName: "checkmark.circle.fill")
-                    .font(Font.system(size: 30))
-                    Text("Verified")
+                    if (isVerified != "") {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(Font.system(size: 30))
+                            .foregroundColor(.green)
+                        Text("Verified")
+                    }
+                    else {
+                        Image(systemName: "xmark.circle.fill")
+                            .font(Font.system(size: 30))
+                            .foregroundColor(.red)
+                        Text("Not Verified")
+                    }
                 } .frame(width: 250, height: 50, alignment: .leading)
             }
             
             
-            }
+        }
     }
 }
 
 struct MatchView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchView(likes: 5, comments: 3, clubName: "hey", uploadDate: "ey", description: "description", isLiked: true, isCommented: true)
+        MatchView(likes: 5, comments: 3, clubName: "hey", uploadDate: "ey", description: "description", isLiked: true, isCommented: true, isVerified: "")
     }
 }

@@ -13,7 +13,7 @@ struct UserFeed: View {
     var body: some View {
         ScrollView {
         ForEach(results.data) { result in
-            MatchView(firstName: "Eric", lastName: "Jognson", likes: result.likeCount, comments: result.commentCount, clubName: result.course.name, uploadDate: result.createdAt, description: result.datumDescription ?? "", isLiked: result.liked, isCommented: result.commented)
+            MatchView(firstName: "Eric", lastName: "Jognson", likes: result.likeCount, comments: result.commentCount, clubName: result.course.name, uploadDate: result.createdAt, description: result.description ?? "", isLiked: result.liked, isCommented: result.commented, isVerified: result.verifiedAt ?? "")
              }
         }.onAppear(perform: loadData)
             

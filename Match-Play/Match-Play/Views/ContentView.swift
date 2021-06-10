@@ -18,34 +18,35 @@ struct ContentView: View {
         NavigationView {
             VStack(alignment: .center) {
                 Text("Match Play").font(.title.bold()).padding()
-            
+                
                 Text("Username").padding(.trailing).font(.title2.bold())
-            TextField("Enter username", text: $email)
-                .padding()
+                TextField("Enter username", text: $email)
+                    .padding()
                 Divider()
                 Text("Password").padding(.trailing).font(.title2.bold())
-            TextField("Enter password", text: $password)
-                .padding()
+                TextField("Enter password", text: $password)
+                    .padding()
                 Divider()
-            NavigationLink(destination: UserFeed(results: AllData(data: [])), isActive: $isActive) {
-            Button(action: {
-                postLogin()
-                
-            }) {
-                
-                Text("Login")
-                
-            }
-            } .padding()
-            if self.showingConfirmation {
-                Text(confirmationMessage)
-                    .foregroundColor(.red)
-            }
+                NavigationLink(destination: UserFeed(results: AllData(data: [])), isActive: $isActive) {
+                    Button(action: {
+                        postLogin()
+                        
+                    }) {
+                        
+                        Text("Login")
+                        
+                    }
+                } .padding()
+                if self.showingConfirmation {
+                    Text(confirmationMessage)
+                        .foregroundColor(.red)
+                }
+               Spacer()
+            }.padding()
          
-        }.padding()
             
         }
-
+        
     }
     
     
@@ -64,7 +65,6 @@ struct ContentView: View {
                 return
             }
             if let decodedUser = try? JSONDecoder().decode(Token.self, from: data) {
-                print(decodedUser.api_token)
                 UserDefaults.standard.set(decodedUser.api_token, forKey: "savedToken")
                 if (decodedUser.api_token == nil){
                     self.isActive = false
@@ -75,21 +75,16 @@ struct ContentView: View {
                     self.isActive = true
                     showingConfirmation = false
                 }
-              
-               
-                
-              
-                
             } else {
                 print("Invalid response from server")
                 confirmationMessage = "There was a trouble with the server!"
-             showingConfirmation = true
+                showingConfirmation = true
                 self.isActive = false
             }
         }.resume()
     }
-   
-   
+    
+    
 }
 
 
