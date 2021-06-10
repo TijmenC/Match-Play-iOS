@@ -10,6 +10,14 @@ import SwiftUI
 struct MatchView: View {
     @State var firstName = ""
     @State var lastName = ""
+    @State var likes: Int
+    @State var comments: Int
+    @State var clubName: String
+    @State var uploadDate: String
+    @State var description: String
+    @State var isLiked: Bool
+    @State var isCommented: Bool
+
     
     var body: some View {
         VStack {
@@ -34,29 +42,41 @@ struct MatchView: View {
                 .frame(width: 400.0, height: 250.0)
             Divider()
             HStack {
-                Text("Place of club")
+                Text(clubName)
                     .padding()
                     .frame(width: 200, height: 50, alignment: .leading)
                     .foregroundColor(Color.gray)
-                Text("02.03.2042")
+                Text(uploadDate)
                     .padding()
                     .frame(width: 200, height: 50, alignment: .trailing)
                     .foregroundColor(Color.gray)
             }
-                Text("I Beat him so hard it's not funny anymore")
+                Text(description)
                     .frame(width: 400, height: 50)
             Divider()
             HStack {
                 HStack {
+                    if (!isLiked) {
                 Image(systemName: "heart")
                     .font(Font.system(size: 30))
                     .padding(.leading, 5)
-                Text("5")
-                }.frame(width: 70, height: 50, alignment: .leading)
+                    Text(" \(likes)")
+                }
+                    else {
+                        Image(systemName: "heart.fill")
+                            .font(Font.system(size: 30))
+                            .padding(.leading, 5)
+                            .foregroundColor(.red)
+                            Text(" \(likes)")
+                            
+                        
+                    }
+                }.frame(width: 80, height: 50, alignment: .leading)
+               
                 HStack {
                 Image(systemName: "bubble.left")
                     .font(Font.system(size: 30))
-                Text("5")
+                    Text(" \(comments)")
                 }.frame(width: 70, height: 50, alignment: .leading)
                 HStack {
                 Image(systemName: "checkmark.circle.fill")
@@ -72,6 +92,6 @@ struct MatchView: View {
 
 struct MatchView_Previews: PreviewProvider {
     static var previews: some View {
-        MatchView()
+        MatchView(likes: 5, comments: 3, clubName: "hey", uploadDate: "ey", description: "description", isLiked: true, isCommented: true)
     }
 }

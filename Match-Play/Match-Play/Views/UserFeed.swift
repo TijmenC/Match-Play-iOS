@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct UserFeed: View {
-    @State var results = [AllData]()
+    @State var results: AllData
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/).onAppear(perform: loadData)
+        ScrollView {
+        ForEach(results.data) { result in
+            MatchView(firstName: "Eric", lastName: "Jognson", likes: result.likeCount, comments: result.commentCount, clubName: result.course.name, uploadDate: result.createdAt, description: result.datumDescription ?? "", isLiked: result.liked, isCommented: result.commented)
+             }
+        }.onAppear(perform: loadData)
+            
     }
     func loadData() {
         guard let url = URL(string: "https://api.wearematchplay.com/v2/matches") else {
@@ -27,6 +33,7 @@ struct UserFeed: View {
                 let decodedResponse = try JSONDecoder().decode(AllData.self, from: data)
                 DispatchQueue.main.async {
                     print(decodedResponse)
+                    results = decodedResponse
                  }
               } catch let DecodingError.dataCorrupted(context) {
                 print(context)
@@ -53,6 +60,6 @@ struct UserFeed: View {
 
 struct UserFeed_Previews: PreviewProvider {
     static var previews: some View {
-        UserFeed()
+        UserFeed(results: AllData(data: []))
     }
 }

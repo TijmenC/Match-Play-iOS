@@ -24,7 +24,7 @@ struct ContentView: View {
             Text("Password").padding(.trailing)
             TextField("Enter password", text: $password)
                 .padding()
-            NavigationLink(destination: UserFeed(), isActive: $isActive) {
+            NavigationLink(destination: UserFeed(results: AllData(data: [])), isActive: $isActive) {
             Button(action: {
                 postLogin()
                 

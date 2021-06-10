@@ -9,7 +9,7 @@ struct AllData: Codable {
 
 
 // MARK: - Datum
-struct Data: Codable {
+struct Data: Codable, Identifiable {
     let id, courseID: Int
     let showCourse: Bool
     let type, winningScore, holesNotPlayed, winningTeam: Int
